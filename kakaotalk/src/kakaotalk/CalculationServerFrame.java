@@ -21,12 +21,12 @@ public class CalculationServerFrame extends JFrame {
 	private JTextArea log = new JTextArea();
 
 	public CalculationServerFrame() {
-		super("멀티 스레드 계산 서버");
+		super("멀티 스레드 챗팅 서버");
 		setSize(250, 250);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		Container c = getContentPane();
-		c.add(new JLabel("계산 서버 입니디"));
+		c.add(new JLabel("챗팅 서버"));
 		c.add(new JScrollPane(log), BorderLayout.CENTER);
 		setVisible(true);
 
@@ -43,6 +43,7 @@ public class CalculationServerFrame extends JFrame {
 				while (true) {
 					socket = listener.accept();
 					log.append("클라이언트 연결됨\n");
+					log.setCaretPosition(log.getDocument().getLength());
 					new ServiceThread(socket).start();
 
 				}
@@ -81,14 +82,14 @@ public class CalculationServerFrame extends JFrame {
 			while(true){
 				try {
 					String first = in.readLine();
-					String operator = in.readLine();
-					String second = in.readLine();
-					int a = Integer.parseInt(first);
-					int b = Integer.parseInt(second);
+					//String operator = in.readLine();
+					//String second = in.readLine();
+					//int a = Integer.parseInt(first);
+					//int b = Integer.parseInt(second);
 					
 					String resText = "";
 					int res = 0;
-				switch (operator) {
+				/*switch (operator) {
 				case "+" : res = a+b; resText = Integer.toString(res); break;
 					
 				case "-" : res = a-b; resText = Integer.toString(res); break;
@@ -106,13 +107,15 @@ public class CalculationServerFrame extends JFrame {
 				break;
 				default:
 					resText = "잘못된 연산";
-				}
+				}*/
 				out.write(resText + "\n");
 				out.flush();
-				log.append(first + operator + second + "=" +resText);
+				log.append(first /*+ operator + second + "=" */+resText + "\n");
+				log.setCaretPosition(log.getDocument().getLength());
 				
 				} catch (IOException e) {
 					log.append("연결종료\n");
+					log.setCaretPosition(log.getDocument().getLength());
 					System.out.println("연결 종료");
 					return;
 					//e.printStackTrace();

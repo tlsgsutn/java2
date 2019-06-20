@@ -13,19 +13,17 @@ import java.net.Socket;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public class CalculationClientFrame extends JFrame {
+public class kakaot extends JFrame {
 	private JTextField startTf = new JTextField(7);
 	private JButton calcBtn = new JButton("전송");
 	private Socket socket = null;
 	private BufferedReader in = null;
 	private BufferedWriter out = null;
 
-	public CalculationClientFrame() {
-		super("비숑 프리제");
+	public kakaot() {
+		super("뽀빠이돼지(S.P)");
 		setSize(410, 100);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Container c = getContentPane();
@@ -54,7 +52,7 @@ public class CalculationClientFrame extends JFrame {
 							||endText.length() == 0*/) 
 							return;
 					
-						out.write("비숑 프리제 : " + startText + "\n");
+						out.write("뽀빠이돼지(S.P) : " + startText + "\n");
 						//out.write(operatorText + "\n");
 						//out.write(endText + "\n");
 						out.flush();
@@ -64,7 +62,7 @@ public class CalculationClientFrame extends JFrame {
 					
 				} catch (IOException e) {
 					// TODO: handle exception
-					System.out.println("클라이언트16번 : 띵고서버로부터 연결 종료");
+					System.out.println("클라이언트12번 : 띵고서버로부터 연결 종료");
 					return;
 					// e.printStactTeace();
 				}
@@ -86,7 +84,7 @@ public class CalculationClientFrame extends JFrame {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		new CalculationClientFrame();
+		new kakaot();
 	}
 
 }
